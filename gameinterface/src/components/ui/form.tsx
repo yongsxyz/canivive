@@ -6,8 +6,8 @@ import {
   ControllerProps,
   FieldPath,
   FieldValues,
-  FormProvider,
-  useFormContext,
+  FormProvaider,
+  useFormCoantext,
 } from "react-hook-form"
 
 import { cn } from "@/lib/utils"

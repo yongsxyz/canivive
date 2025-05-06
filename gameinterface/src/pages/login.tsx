@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from 'react-router-dom';
 import { DialogHeader, Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -12,6 +12,8 @@ import LeaderboardModal from "@/components/leaderboard/LeaderboardModal";
 import useGameSettings from "@/context/Settings";
 
 import Grid from '@/components/layout/Grid';
+import { useAuth } from "@/context/authcontext";
+
 
 const serverList = [
     {
@@ -59,12 +61,18 @@ const Index = () => {
     const [showLeaderboardModal, setShowLeaderboardModal] = React.useState(false);
     const { toggleSettings } = useGameSettings();
 
+    const { isAuthenticated, principal, login, logout } = useAuth();
 
     const navigate = useNavigate();
 
-    const handleConnectWallet = () => {
-        setIsWalletConnected(true);
-    };
+    const handleConnectWallet = async () => {
+        try {
+          setIsWalletConnected(true);
+          await login();
+        } catch (error) {
+          setIsWalletConnected(false); 
+        }
+      };
 
     const handleJoinWorld = () => {
         setShowServerModal(true);
@@ -73,6 +81,7 @@ const Index = () => {
     const handleLogout = () => {
         setIsWalletConnected(false);
         setShowServerModal(false);
+        logout();
     };
 
     const [selectedServer, setSelectedServer] = React.useState<number | null>(null);
@@ -96,13 +105,18 @@ const Index = () => {
         }
     };
 
+    useEffect(() => {
+        if (isAuthenticated) {
+          setIsWalletConnected(true); 
+        } else {
+          setIsWalletConnected(false);
+        }
+      }, [isAuthenticated]);
+    
+
     return (
 
         <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center p-4">
-
-
-
-
             <div className="absolute inset-0 z-0">
                 <Grid
                     speed={0.5}
@@ -110,8 +124,6 @@ const Index = () => {
                     direction='diagonal'
                     borderColor='#fff'
                     hoverFillColor='#222'
-
-
                 />
             </div>
 
@@ -130,7 +142,7 @@ const Index = () => {
                     </div>
 
                     <div className="w-full max-w-xs sm:max-w-md space-y-4">
-                        {!isWalletConnected ? (
+                        {!isAuthenticated  ? (
                             <Button
                                 onClick={handleConnectWallet}
                                 className="w-full bg-game-primary hover:bg-game-secondary text-white font-bold py-4 sm:py-5 text-sm sm:text-base transition-all duration-300 hover:scale-105 shadow-lg"

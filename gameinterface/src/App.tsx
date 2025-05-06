@@ -11,6 +11,8 @@ import LandingPage from "./pages/landingePage";
 import { InventoryProvider } from "@/context/InventoryContext";
 import { GameCurrencyProvider } from '@/context/GameCurrencyContext';
 import { SettingsProvider } from "@/context/Settings";
+import { AuthProvider } from "@/context/authcontext";
+import ProtectedRoute from "@/components/protectedroute";
 
 import {
   saveSettings,
@@ -46,25 +48,32 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <InventoryProvider>
-        <GameCurrencyProvider>
-          <TooltipProvider>
-            <div className={`${currentFontClass} ${currentFontSizeClass}`}>
-              <Toaster />
-              <Sonner />
-              <SettingsProvider>
-              <BrowserRouter>
-                <Routes>
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/environment" element={<Index />} />
-                  <Route path="/" element={<LandingPage />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </BrowserRouter>
-              </SettingsProvider>
-            </div>
-          </TooltipProvider>
-        </GameCurrencyProvider>
+        <AuthProvider>
+          <GameCurrencyProvider>
+            <TooltipProvider>
+              <div className={`${currentFontClass} ${currentFontSizeClass}`}>
+                <Toaster />
+                <Sonner />
+                <SettingsProvider>
+                  <BrowserRouter>
+                    <Routes>
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/environment" element={
+                        <ProtectedRoute>
+                          <Index />
+                        </ProtectedRoute>
+                      } />
+                      <Route path="/" element={<LandingPage />} />
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </BrowserRouter>
+                </SettingsProvider>
+              </div>
+            </TooltipProvider>
+          </GameCurrencyProvider>
+        </AuthProvider>
       </InventoryProvider>
+
     </QueryClientProvider>
   );
 };

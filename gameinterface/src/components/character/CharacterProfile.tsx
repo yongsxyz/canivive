@@ -22,7 +22,7 @@ const CharacterProfile: React.FC<CharacterProfileProps> = ({ name, level, experi
     <div className="flex flex-col items-center">
     
       
-      <h3 className="text-xl font-bold text-game-primary mb-1">{name}</h3>
+      <h3 className="text-xl font-bold text-game-primary mb-1"> {name.length > 10 ? `${name.slice(0, 10)}...${name.slice(-3)}` : name}</h3>
       
       <div className="w-full mb-2 relative">
   {/* Level Badge & Info - Ditempatkan di atas progress bar */}

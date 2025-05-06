@@ -13,8 +13,24 @@ import { Item } from "@/types/items";
 
 
 import { useInventory } from "@/context/InventoryContext";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/authcontext";
+
 
 const Index = () => {
+  const { isAuthenticated, isLoading } = useAuth();
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, isLoading, navigate]);
+
+
+  if (isLoading || !isAuthenticated) {
+    return null;
+  }
 
   const [activeTab, setActiveTab] = useState("character");
 

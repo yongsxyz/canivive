@@ -22,7 +22,7 @@ const CATEGORIES = [
   { id: "cape", label: "cape", icon: "🚩" },
   { id: "legs", label: "legs", icon: "🦶" },
   { id: "potion", label: "Potions", icon: "🧪" },
-  { id: "head", label: "Headgear", icon: "🪖" },
+  { id: "head", label: "Headgear", icon: "⛑️" },
   { id: "accessory", label: "Accessories", icon: "💍" },
   { id: "food", label: "Food", icon: "🍎" },
   { id: "material", label: "Materials", icon: "🔨" },

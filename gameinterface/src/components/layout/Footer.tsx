@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Facebook, Github, Instagram, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -34,29 +34,31 @@ const Footer = () => {
           </div>
           <div>
             <h3 className="text-xl font-bold text-white mb-4">Connect With Us</h3>
-            <div className="flex space-x-4">
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href="#"
-                className="text-gray-400 hover:text-game-primary"
-              >
-                <Facebook className="h-6 w-6" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href="#"
-                className="text-gray-400 hover:text-game-primary"
-              >
-                <Instagram className="h-6 w-6" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href="#"
-                className="text-gray-400 hover:text-game-primary"
-              >
-                <Twitter className="h-6 w-6" />
-              </motion.a>
-            </div>
+            <div className="flex items-center space-x-4">
+  <motion.a
+    whileHover={{ scale: 1.1 }}
+    href="https://oc.app/group/hznfs-bqaaa-aaaac-aqtla-cai/?ref=ln6nh-5aaaa-aaaac-aq6ja-cai"
+    className="text-gray-400 hover:text-game-primary"
+  >
+    <img src="/openchat.png" alt="openchat" className="h-8 w-8 object-contain" />
+  </motion.a>
+
+  <motion.a
+    whileHover={{ scale: 1.1 }}
+    href="https://x.com/canivive"
+    className="text-gray-400 hover:text-game-primary"
+  >
+    <img src="/x.png" alt="x" className="h-8 w-8 object-contain" />
+  </motion.a>
+  <motion.a
+    whileHover={{ scale: 1.1 }}
+    href="https://github.com/yongsxyz/canivive"
+    className="text-gray-400 hover:text-game-primary"
+  >
+    <Github className="h-8 w-8" />
+  </motion.a>
+</div>
+
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-800 text-center">

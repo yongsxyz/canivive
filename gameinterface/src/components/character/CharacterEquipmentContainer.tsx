@@ -34,6 +34,7 @@ interface CharacterEquipmentContainerProps {
 
 import { useInventory } from "@/context/InventoryContext";
 import { MAX_SLOT_DEFAULT, MAX_WEIGHT_DEFAULT } from "@/config/constants";
+import { useAuth } from "@/context/authcontext";
 
 const CharacterEquipmentContainer: React.FC<CharacterEquipmentContainerProps> = () => {
   const { goldBalance, setGoldBalance, gemBalance } = useGameCurrency();
@@ -48,7 +49,7 @@ const CharacterEquipmentContainer: React.FC<CharacterEquipmentContainerProps> = 
 
   const [activeBuffs, setActiveBuffs] = useState<ActiveBuff[]>([]);
 
-
+  const { principal} = useAuth();
 
   const baseStats = {
     damage: 10,
@@ -99,32 +100,6 @@ const CharacterEquipmentContainer: React.FC<CharacterEquipmentContainerProps> = 
     return sum + (item.value * count);
   }, 0);
 
-  const equipmentMaxBonuss = useMemo(() => {
-    const maxStatBonuses = {
-      damage: 0,
-      health: 0,
-      armor: 0,
-      hungry: 0,
-      thirst: 0,
-      stamina: 0,
-      mood: 0,
-    };
-
-    for (const slot of equippedItems) {
-      const stats = slot.item?.stats;
-      if (!stats) continue;
-
-      if (stats.damage) maxStatBonuses.damage += stats.damage;
-      if (stats.health) maxStatBonuses.health += stats.health;
-      if (stats.armor) maxStatBonuses.armor += stats.armor;
-      if (stats.hungry) maxStatBonuses.hungry += stats.hungry;
-      if (stats.thirst) maxStatBonuses.thirst += stats.thirst;
-      if (stats.stamina) maxStatBonuses.stamina += stats.stamina;
-      if (stats.mood) maxStatBonuses.mood += stats.mood;
-    }
-
-    return maxStatBonuses;
-  }, [equippedItems]);
 
   useEffect(() => {
     setEquipmentMaxBonus(equipmentMaxBonuss);
@@ -142,14 +117,6 @@ const CharacterEquipmentContainer: React.FC<CharacterEquipmentContainerProps> = 
 
   const canEquipItemToSlot = (item: Item, slotId: string, slotType: string): boolean => {
     if (slotId === "hands" && item.type === "weapon") return true;
-
-    if (item.type === "armor") {
-      if (slotId === "head" && item.armorType === "head") return true;
-      if (slotId === "body" && item.armorType === "body") return true;
-      if (slotId === "pants" && item.armorType === "pants") return true;
-      if (slotId === "legs" && item.armorType === "legs") return true;
-      if (slotId === "cape" && item.armorType === "cape") return true;
-    }
 
     if (slotId === "bag" && item.type === "bag") return true;
 
@@ -227,12 +194,12 @@ const CharacterEquipmentContainer: React.FC<CharacterEquipmentContainerProps> = 
 
   const handleUnequipItem = (slotId: string) => {
     const slotIndex = equippedItems.findIndex(slot => slot.id === slotId);
-    if (slotIndex === -1 || !equippedItems[slotIndex].item) return;
+    if (slotIndex === -1 || !eaquippedItems[slotIndex].item) return;
 
     const item = equippedItems[slotIndex].item!;
 
     if (item.type === "bag") {
-      const currentTotalItems = inventoryItems.length;
+      const acurrentTotalItems = inventoryItems.length;
       const bagCapacity = getBagCapacity(item);
       const newSlotLimit = inventoryOptions.maxSlots - bagCapacity.slots;
 
@@ -1355,7 +1322,7 @@ const CharacterEquipmentContainer: React.FC<CharacterEquipmentContainerProps> = 
           </div>
         </div>
         <CharacterProfile
-          name="e52zm-c...w-5tuge-aqe"
+          name={principal}
           level={25}
           experiencePercentage={75}
         />
