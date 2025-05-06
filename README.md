@@ -2,6 +2,12 @@
 
 **Canivive** is an MMORPG Survival Sandbox Adventure game that blends PvP, PvE, and Play-to-Earn (P2E) elements within an open-world blockchain environment. Players choose one of two main factions and strive to survive while building, exploring, gathering, refining, fighting, and trading..
 
+
+website : canivive.xyz
+canister : -
+openchat : https://oc.app/group/hznfs-bqaaa-aaaac-aqtla-cai/
+x : https://x.com/canivive
+
 ---
 
 ![Canister (1)](https://github.com/user-attachments/assets/b3f234f4-e41e-425d-b3f0-21e414e7ab47)
