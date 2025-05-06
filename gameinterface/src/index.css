@@ -1,0 +1,250 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 224 30% 10%;
+    --foreground: 240 5% 96%;
+
+    --card: 224 30% 12%;
+    --card-foreground: 240 5% 96%;
+
+    --popover: 224 30% 12%;
+    --popover-foreground: 240 5% 96%;
+
+    --primary: 260 80% 74%;
+    --primary-foreground: 240 5% 10%;
+
+    --secondary: 260 27% 54%;
+    --secondary-foreground: 240 5% 96%;
+
+    --muted: 240 4% 20%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 196 100% 50%;
+    --accent-foreground: 240 5% 96%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 240 5% 96%;
+
+    --border: 240 4% 30%;
+    --input: 240 4% 30%;
+    --ring: 260 80% 74%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Game specific variables */
+    --game-primary: #9b87f5;
+    --game-secondary: #7E69AB;
+    --game-tertiary: #6E59A5;
+    --game-accent: #33C3F0;
+    --game-dark: #1A1F2C;
+    --game-light: #D6BCFA;
+    --game-gold: #FFBB00;
+    --game-destructive: #ef4444;
+  }
+
+  .dark {
+    --background: 224 30% 10%;
+    --foreground: 240 5% 96%;
+
+    --card: 224 30% 12%;
+    --card-foreground: 240 5% 96%;
+
+    --popover: 224 30% 12%;
+    --popover-foreground: 240 5% 96%;
+
+    --primary: 260 80% 74%;
+    --primary-foreground: 240 5% 10%;
+
+    --secondary: 260 27% 54%;
+    --secondary-foreground: 240 5% 96%;
+
+    --muted: 240 4% 20%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 196 100% 50%;
+    --accent-foreground: 240 5% 96%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 240 5% 96%;
+
+    --border: 240 4% 30%;
+    --input: 240 4% 30%;
+    --ring: 260 80% 74%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Game specific variables for dark mode */
+    --game-dark: #121212;
+    --game-light: #B8A3E8;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground ;
+  }
+}
+
+
+/* For WebKit browsers (Chrome, Safari) */
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--game-primary);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--game-primary);
+}
+
+/* For Firefox */
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--game-primary) transparent;
+}
+
+
+@layer components {
+  .game-ui {
+    @apply bg-game-dark bg-opacity-90 text-foreground border-2 border-game-primary rounded-md p-4 shadow-lg;
+  }
+
+  .game-header {
+    @apply bg-game-tertiary bg-opacity-95 text-foreground p-3 rounded-t-md font-bold;
+  }
+
+  .game-button {
+    @apply bg-game-secondary hover:bg-game-tertiary text-foreground px-4 py-1 rounded-md border border-game-primary transition-colors duration-200;
+  }
+
+  .game-search {
+    @apply bg-muted bg-opacity-40 text-foreground border border-game-tertiary rounded-md px-3 py-1 focus:outline-none focus:ring-1 focus:ring-game-primary;
+  }
+
+  .game-select {
+    @apply bg-muted bg-opacity-40 text-foreground border border-game-tertiary rounded-md px-2 py-1 focus:outline-none focus:ring-1 focus:ring-game-primary;
+  }
+
+  .game-item {
+    @apply border-2 border-game-tertiary bg-black bg-opacity-30 rounded-md overflow-hidden cursor-grab transition-all duration-200 hover:scale-105 hover:border-game-primary;
+  }
+
+  .item-common {
+    @apply border-gray-400 shadow;
+  }
+
+  .item-uncommon {
+    @apply border-green-500 shadow-md shadow-green-500/20;
+  }
+
+  .item-rare {
+    @apply border-blue-500 shadow-md shadow-blue-500/20;
+  }
+
+  .item-epic {
+    @apply border-purple-500 shadow-md shadow-purple-500/20;
+  }
+
+  .item-legendary {
+    @apply border-orange-400 shadow-lg shadow-orange-400/30;
+  }
+
+  .location-row {
+    @apply flex items-center justify-between bg-muted bg-opacity-40 mb-1 py-2 px-3 rounded-md hover:bg-opacity-60 transition-colors duration-200;
+  }
+
+  .location-icon {
+    @apply w-5 h-5 mr-2;
+  }
+
+  .equipment-slot {
+    @apply border-2 border-dashed border-game-tertiary bg-muted bg-opacity-20 rounded-md aspect-square flex items-center justify-center;
+  }
+
+  .equipment-slot.filled {
+    @apply border-solid border-game-primary;
+  }
+
+  .stats-bar {
+    @apply h-2 bg-muted rounded-full overflow-hidden;
+  }
+
+  .stats-bar-fill {
+    @apply h-full;
+    background-color: var(--game-accent);
+  }
+
+  /* Progress bar styles */
+  .bg-striped {
+    background: repeating-linear-gradient(
+      45deg,
+      var(--game-accent, #33C3F0),
+      var(--game-accent, #33C3F0) 10px,
+      rgba(51, 195, 240, 0.7) 10px,
+      rgba(51, 195, 240, 0.7) 20px
+    );
+  }
+
+  /* Animation for timer circle */
+  .animate-strokeTransition {
+    transition: stroke-dashoffset 10ms linear;
+  }
+
+  /* Animation for dragging */
+  .dragging {
+    @apply scale-105 shadow-lg rotate-1;
+  }
+}
+
+
+.lightning-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+
+.orb-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+

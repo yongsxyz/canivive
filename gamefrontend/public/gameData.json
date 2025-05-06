@@ -1,0 +1,20 @@
+[
+
+    {
+      "title": "Test Server",
+      "imageUrl": "/PreviewTestGame.webp",
+      "images": [
+        {
+          "url": "/PreviewTestGame.webp",
+          "width": 1920,
+          "height": 1080,
+          "alt": "Canivive Logo",
+          "type": "image/webp" 
+        } 
+      ],
+      "websocketPort": 8001,
+      "slug": "test",
+      "metaDescription": "This is a test server for development purposes. Feel free to join and test the game.",
+      "markdown": "## Development Testing Environment 🔧\n\nWelcome to our **experimental testing zone**! This is where we prototype and improve the game. Expect frequent changes and updates as we test new features.\n\n### What We're Testing:\n- 🚗 **Improved Car Physics**: Smoother handling and realistic driving mechanics\n- 🖼️ **Enhanced Graphics**: Better visuals and performance optimizations\n- 🎮 **New Gamemodes**: Experimental gameplay modes for feedback\n- 🖥️ **UI Improvements**: Redesigned interfaces and controls\n- 🌍 **Dynamic World Changes**: The environment may change frequently during testing\n\n### Important Notes:\n⚠️ **This is a testing environment** - things may break or change unexpectedly!\n⚠️ Progress here **won't carry over** to the main game.\n⚠️ The world and mechanics will evolve as we test new ideas.\n\n### How to Help:\n1. Try out the new features and provide feedback\n\n2. Share your thoughts on new gamemodes and physics\n3. Test on different devices (desktop, mobile, etc.)\n\n### What's Changing:\n- 🚗 Cars: Improved handling, acceleration, and collisions\n- 🌍 World: New layouts, obstacles, and interactive elements\n- 🎮 Gamemodes: Experimental rules and objectives\n- 🖥️ UI: Cleaner menus and better controls\n\n**Pro Tip:** Be patient! Things may feel rough as we experiment and improve.\n\n---\n\n### Why Participate?\n✅ Get early access to new features\n✅ Help shape the future of the game\n✅ Experience cutting-edge changes before anyone else\n\n[Join Testing] and be part of the development process! 👨‍💻"
+    } 
+  ]
